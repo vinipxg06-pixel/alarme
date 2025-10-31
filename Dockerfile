@@ -1,6 +1,9 @@
 # Usar a imagem oficial do Python com suporte para arm64 como base
 FROM --platform=linux/arm64 python:3.9-slim
 
+# Definir a variável de ambiente para evitar interatividade no debconf
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Instalar dependências de áudio e compilação para o pygame
 RUN apt-get update && apt-get install -y \
     gcc \
