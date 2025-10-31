@@ -1,0 +1,14 @@
+sudo apt update
+sudo apt install python3 python3-tk vlc feh
+mkdir -p ~/alarme
+cd ~/alarme
+Coloque dentro dela:
+
+//o som (ex: sino.mp3)
+//a imagem (ex: alarme.png)
+
+nano ~/alarme/alarme_escolar.py
+//coolar o código do outro arquivo
+
+chmod +x ~/alarme/alarme_escolar.py
+python3 ~/alarme/alarme_escolar.py
