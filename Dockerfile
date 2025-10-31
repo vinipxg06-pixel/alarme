@@ -1,5 +1,10 @@
-# Usar a imagem oficial do Python como base
-FROM python:3.9-slim
+# Usar a imagem oficial do Python com suporte para arm64 como base
+FROM --platform=linux/arm64 python:3.9-slim
+
+# Instalar dependências de áudio para ARM
+RUN apt-get update && apt-get install -y \
+    libsndfile1 \
+    && rm -rf /var/lib/apt/lists/*
 
 # Definir o diretório de trabalho dentro do contêiner
 WORKDIR /app
@@ -8,7 +13,7 @@ WORKDIR /app
 COPY alarme.py /app/alarme.py
 COPY sirene.mp3 /app/sirene.mp3
 
-# Instalar dependências necessárias para tocar o som
+# Instalar a biblioteca pygame necessária para tocar o som
 RUN pip install pygame
 
 # Comando para rodar o script Python
